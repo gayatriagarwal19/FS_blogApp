@@ -7,7 +7,11 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer")
+const cors = require("cors");
 
+app.use(cors({
+    origin: "http://localhost:3000"
+}));
 
 app.use(express.json());
 dotenv.config();
