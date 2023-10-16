@@ -5,11 +5,12 @@ import axios from "axios"
 
 export default function Sidebar() {
 
-    const [cats, setCats] = useState({});
+    const [cats, setCats] = useState([]);
 
     useEffect(()=>{
         const getCats = async ()=>{
             const res = await axios.get("http://localhost:5000/api/categories")
+            // console.log(res.data);
             setCats(res.data)
         }
         getCats()
@@ -25,13 +26,13 @@ export default function Sidebar() {
         <div className="sidebarItem">
             <span className="sidebarTitle">CATEGORIES</span>
             <ul className="sidebarList">
-                {/* {cats.map((c) => (
-                <li className="sidebarListItem">
-                    <Link className="link" to="/posts?cat=Life">
-                        {c.name}
-                    </Link>
-                </li>
-                ))} */}
+                {cats.map((c) => (
+                    <li className="sidebarListItem">
+                        <Link className="link" to={`/?cat=${c.name}`}>
+                            {c.name}
+                        </Link>
+                    </li>
+                ))}
             </ul>
         </div>
         <div className="sidebarItem">
