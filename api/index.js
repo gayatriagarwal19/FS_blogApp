@@ -23,7 +23,7 @@ mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     // useCreateIndex: true,
-    // useFindAndModify: false,
+    // useFindAndModify: true,
 }).then(console.log("connected to mongoose")).catch(err=> console.log(err));
 
 const storage = multer.diskStorage({
